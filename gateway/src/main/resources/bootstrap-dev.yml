@@ -30,5 +30,26 @@ spring:
             - Path=/sca-composite-gateway/api/**
           filters:                       # 过滤器,请求在传递过程中可以通过过滤器对其进行一定的修改
             - StripPrefix=1              # 转发之前去掉1层路径
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080 #配置Sentinel dashboard地址
+        port: 8719  #这个端口配置会在应用对应的机器上启动一个Http Server，该Server会与 Sentinel 控制台做交互
+      datasource:
+        flow:
+          nacos:
+            server-addr: 49.234.176.174:8848 #nacos的访问地址，，根据上面准备工作中启动的实例配置
+            dataId: sca-sentinel-flow-service #nacos中存储规则的dataId
+            groupId: SCA_COMPOSITE #nacos中存储规则的groupId
+            namespace: 8d157837-f1d2-4633-b4cd-6789ce9f6399 #Nacos 命名空间的ID
+            data-type: json #配置文件类型
+            rule-type: flow #类型来自RuleType类 - 流控规则
+        degrade:
+          nacos:
+            server-addr: 49.234.176.174:8848 #nacos的访问地址，，根据上面准备工作中启动的实例配置
+            dataId: sca-sentinel-degrade-service #nacos中存储规则的dataId
+            groupId: SCA_COMPOSITE #nacos中存储规则的groupId
+            namespace: 8d157837-f1d2-4633-b4cd-6789ce9f6399 #Nacos 命名空间的ID
+            data-type: json #配置文件类型
+            rule-type: degrade #类型来自RuleType类 - 熔断规则
   application:
     name: sca-composite-gateway
