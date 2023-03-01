@@ -1,6 +1,8 @@
-*/target/
-/*/*/target/
-/.idea
-spring-cloud-composite.iml
-/common/target/
-*.iml
+*/TARGET/
+/*/*/TARGET/
+/.IDEA
+SPRING-CLOUD-COMPOSITE.IML
+/COMMON/TARGET/
+*.IML
+
+
