@@ -7,5 +7,5 @@ import com.chenk.sca.pojo.User;
  * @create 2023/2/28 15:05
  */
 public interface UserService {
-    User userInfo();
+    User userInfo(String username);
 }
